@@ -1,0 +1,47 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "redis application",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix src/**/*.ts",
+    "test": "",
+    "build-ts": "tsc",
+    "build": "npm run lint && npm run build-ts",
+    "start": "nodemon -e js -x node dist/.",
+    "prod": "node dist/."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dotenv-safe": "^8.1.0",
+    "@types/glob": "^7.1.1",
+    "@types/ioredis": "^4.16.0",
+    "@types/koa": "^2.11.3",
+    "@types/koa-router": "^7.4.0",
+    "@types/lodash": "^4.14.150",
+    "@types/node": "^13.13.4",
+    "@typescript-eslint/eslint-plugin": "^2.30.0",
+    "@typescript-eslint/parser": "^2.30.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-airbnb-typescript": "^7.2.1",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "nodemon": "^2.0.3",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "awilix": "^4.2.6",
+    "awilix-koa": "^4.0.0",
+    "dotenv-safe": "^8.2.0",
+    "ioredis": "^4.16.3",
+    "koa": "^2.11.0",
+    "koa-jsend": "^2.0.0",
+    "koa-router": "^8.0.8",
+    "koa-simple-healthcheck": "0.0.1",
+    "lodash": "^4.17.15"
+  }
+}

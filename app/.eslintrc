@@ -1,0 +1,23 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "import"],
+  "extends": ["airbnb-base", "airbnb-typescript/base", "plugin:@typescript-eslint/eslint-recommended"],
+  "settings": {
+    "import/resolver": {
+      "typescript": { "extensions": [".ts", ".tsx", "d.ts"] }
+    }
+  },
+  "rules": {
+    "eqeqeq": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-underscore-dangle": 0,
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "object-curly-newline": "off",
+    "arrow-body-style": "off",
+    "class-methods-use-this": "off"
+  }
+}
