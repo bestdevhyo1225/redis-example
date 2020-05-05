@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  master:
+    image: redis:5.0-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: "host"
+    environment:
+      - REQUIREPASS=password1234
+      - CLIENTHOST=0.0.0.0
+      - CLIENTPORT=6379
+      - MASTERHOST=
+      - MASTERPORT=
+    restart: always
+
+  slave1:
+    image: redis:5.0-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: "host"
+    environment:
+      - REQUIREPASS=password1234
+      - CLIENTHOST=0.0.0.0
+      - CLIENTPORT=6380
+      - MASTERHOST=0.0.0.0
+      - MASTERPORT=6379
+    restart: always
+
+  slave2:
+    image: redis:5.0-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: "host"
+    environment:
+      - REQUIREPASS=password1234
+      - CLIENTHOST=0.0.0.0
+      - CLIENTPORT=6381
+      - MASTERHOST=0.0.0.0
+      - MASTERPORT=6379
+    restart: always

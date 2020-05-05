@@ -1,0 +1,59 @@
+version: "3"
+
+services:
+  sentinel1:
+    image: lgatica/redis-sentinel:4.0.2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: "host"
+    environment:
+      - CLIENTHOST=0.0.0.0
+      - CLIENTPORT=26379
+      - MASTERHOST=0.0.0.0
+      - MASTERPORT=6379
+      - QUORUM=2
+      - DOWN_AFTER_MILLISEC=3000 # redis master가 다운되면, 3초 이후에 failover를 시작한다.
+      - FAILOVER_TIMEOUT=3000
+      - REQUIREPASS=password1234
+    volumes:
+      - "../sentinel-data/sentinel1:/redis"
+    restart: always
+
+  sentinel2:
+    image: lgatica/redis-sentinel:4.0.2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: "host"
+    environment:
+      - CLIENTHOST=0.0.0.0
+      - CLIENTPORT=26380
+      - MASTERHOST=0.0.0.0
+      - MASTERPORT=6379
+      - QUORUM=2
+      - DOWN_AFTER_MILLISEC=3000 # redis master가 다운되면, 3초 이후에 failover를 시작한다.
+      - FAILOVER_TIMEOUT=3000
+      - REQUIREPASS=password1234
+    volumes:
+      - "../sentinel-data/sentinel2:/redis"
+    restart: always
+
+  sentinel3:
+    image: lgatica/redis-sentinel:4.0.2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: "host"
+    environment:
+      - CLIENTHOST=0.0.0.0
+      - CLIENTPORT=26381
+      - MASTERHOST=0.0.0.0
+      - MASTERPORT=6379
+      - QUORUM=2
+      - DOWN_AFTER_MILLISEC=3000 # redis master가 다운되면, 3초 이후에 failover를 시작한다.
+      - FAILOVER_TIMEOUT=3000
+      - REQUIREPASS=password1234
+    volumes:
+      - "../sentinel-data/sentinel3:/redis"
+    restart: always
