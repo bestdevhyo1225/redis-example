@@ -26,12 +26,14 @@ const index: ConfigIndex = {
     syncModels: process.env.SYNC_MODELS || false,
     syncForce: process.env.SYNC_FORCE || false,
     jwtSecret: process.env.JWT_SECRET || undefined,
-    redis: {
-      startupNodes: [],
-      options: {
-        scaleReads: 'slave',
-        redisOptions: { password: 'password1234' },
-      },
+    redisOptions: {
+      host: '127.0.0.1',
+      port: 6379,
+      sentinels: [],
+      name: 'mymaster',
+      role: 'slave',
+      password: 'password1234',
+      preferredSlaves: [],
     },
   },
   test: {
@@ -40,9 +42,7 @@ const index: ConfigIndex = {
     db: {
       uri: requireProcessEnv('MYSQL_TEST_URI'),
     },
-    redis: {
-      startupNodes: [{ port: 6379, host: '127.0.0.1' }],
-    },
+    redisOptions: {},
   },
   development: {
     syncModels: false,
@@ -52,8 +52,16 @@ const index: ConfigIndex = {
         replication: JSON.parse(requireProcessEnv('MYSQL_REPLICATION')),
       },
     },
-    redis: {
-      startupNodes: [{ port: 6379, host: '127.0.0.1' }],
+    redisOptions: {
+      sentinels: [
+        { host: '127.0.0.1', port: 26379 },
+        { host: '127.0.0.1', port: 26380 },
+        { host: '127.0.0.1', port: 26381 },
+      ],
+      preferredSlaves: [
+        { ip: '127.0.0.1', port: '6380', prio: 1 },
+        { ip: '127.0.0.1', port: '6381', prio: 2 },
+      ],
     },
   },
 };

@@ -1,33 +1,13 @@
-import Redis from 'ioredis';
+import Redis, { Commands } from 'ioredis';
+import { ConfigAll } from 'types/config/all';
+import config from '../../common/config';
 
 export default class RedisService {
-  private sentinels: Array<any>;
-
-  private preferredSlaves: Array<any>;
-
-  private redisInstance: any;
+  private readonly redisInstance: Commands;
 
   constructor() {
-    this.sentinels = [
-      { host: '127.0.0.1', port: 26379 },
-      { host: '127.0.0.1', port: 26380 },
-      { host: '127.0.0.1', port: 26381 },
-    ];
-
-    this.preferredSlaves = [
-      { ip: '127.0.0.1', port: 6380, prio: 1 },
-      { ip: '127.0.0.1', port: 6381, prio: 2 },
-    ];
-
-    this.redisInstance = new Redis({
-      host: '127.0.0.1',
-      port: 6379,
-      sentinels: this.sentinels,
-      name: 'mymatser',
-      role: 'slave',
-      password: 'password1234',
-      preferredSlaves: this.preferredSlaves,
-    });
+    const { redisOptions }: ConfigAll = config;
+    this.redisInstance = new Redis({ ...redisOptions });
   }
 
   public getRedisInstance(): any {

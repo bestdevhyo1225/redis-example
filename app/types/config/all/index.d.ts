@@ -1,4 +1,4 @@
-import { ClusterNode, ClusterOptions } from 'ioredis';
+import { RedisOptions } from 'ioredis';
 
 export interface ConfigAll {
   readonly env: string | number;
@@ -7,8 +7,5 @@ export interface ConfigAll {
   readonly syncModels: string | boolean;
   readonly syncForce: string | boolean;
   readonly jwtSecret: string | undefined;
-  readonly redis: {
-    readonly startupNodes: Array<ClusterNode>;
-    readonly options: ClusterOptions;
-  };
+  readonly redisOptions: RedisOptions;
 }
