@@ -31,7 +31,7 @@ const index: ConfigIndex = {
       port: 6379,
       sentinels: [],
       name: 'mymaster',
-      role: 'slave',
+      role: 'master',
       password: 'password1234',
       preferredSlaves: [],
     },
