@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: "redis_sentinel_1"
     network_mode: "host"
     environment:
       - CLIENTHOST=127.0.0.1
@@ -25,6 +26,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: "redis_sentinel_2"
     network_mode: "host"
     environment:
       - CLIENTHOST=127.0.0.1
@@ -44,6 +46,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: "redis_sentinel_3"
     network_mode: "host"
     environment:
       - CLIENTHOST=127.0.0.1
