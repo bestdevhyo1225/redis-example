@@ -3,6 +3,9 @@ version: '3'
 services:
   event-api:
     image: event:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: event-api
     command: npm run start
     volumes:
