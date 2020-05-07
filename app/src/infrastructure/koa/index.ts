@@ -1,5 +1,6 @@
 import { loadControllers, scopePerRequest } from 'awilix-koa';
 import checkHealth from 'koa-simple-healthcheck';
+import koaBody from 'koa-body';
 import jsend from 'koa-jsend';
 import Koa from 'koa';
 
@@ -11,6 +12,7 @@ export default () => {
 
   app.use(jsend());
 
+  app.use(koaBody({ jsonLimit: '100mb' }));
   app.use(scopePerRequest(container));
   app.use(loadControllers('../../web/http/*Controller.js', { cwd: __dirname }));
 

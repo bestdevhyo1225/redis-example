@@ -8,9 +8,9 @@ services:
       dockerfile: Dockerfile
     network_mode: "host"
     environment:
-      - CLIENTHOST=0.0.0.0
+      - CLIENTHOST=127.0.0.1
       - CLIENTPORT=26379
-      - MASTERHOST=0.0.0.0
+      - MASTERHOST=127.0.0.1
       - MASTERPORT=6379
       - QUORUM=2
       - DOWN_AFTER_MILLISEC=3000 # redis master가 다운되면, 3초 이후에 failover를 시작한다.
@@ -27,9 +27,9 @@ services:
       dockerfile: Dockerfile
     network_mode: "host"
     environment:
-      - CLIENTHOST=0.0.0.0
+      - CLIENTHOST=127.0.0.1
       - CLIENTPORT=26380
-      - MASTERHOST=0.0.0.0
+      - MASTERHOST=127.0.0.1
       - MASTERPORT=6379
       - QUORUM=2
       - DOWN_AFTER_MILLISEC=3000 # redis master가 다운되면, 3초 이후에 failover를 시작한다.
@@ -46,9 +46,9 @@ services:
       dockerfile: Dockerfile
     network_mode: "host"
     environment:
-      - CLIENTHOST=0.0.0.0
+      - CLIENTHOST=127.0.0.1
       - CLIENTPORT=26381
-      - MASTERHOST=0.0.0.0
+      - MASTERHOST=127.0.0.1
       - MASTERPORT=6379
       - QUORUM=2
       - DOWN_AFTER_MILLISEC=3000 # redis master가 다운되면, 3초 이후에 failover를 시작한다.

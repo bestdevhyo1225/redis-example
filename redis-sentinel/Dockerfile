@@ -16,4 +16,4 @@ EXPOSE $CLIENTPORT
 # 컨테이너가 생성, 시작하는 시점에 실행된다.
 ENTRYPOINT [ "/usr/local/bin/docker-sentinel-entrypoint.sh" ]
 
-CMD [ "redis-server", "/usr/local/bin/sentinel.conf", "--sentinel" ]
+CMD [ "redis-sentinel", "/usr/local/bin/sentinel.conf" ]

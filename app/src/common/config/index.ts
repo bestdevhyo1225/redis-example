@@ -27,13 +27,11 @@ const index: ConfigIndex = {
     syncForce: process.env.SYNC_FORCE || false,
     jwtSecret: process.env.JWT_SECRET || undefined,
     redisOptions: {
-      host: '127.0.0.1',
+      host: 'host.docker.internal',
       port: 6379,
-      sentinels: [],
       name: 'mymaster',
       role: 'master',
       password: 'password1234',
-      preferredSlaves: [],
     },
   },
   test: {
@@ -52,17 +50,7 @@ const index: ConfigIndex = {
         replication: JSON.parse(requireProcessEnv('MYSQL_REPLICATION')),
       },
     },
-    redisOptions: {
-      sentinels: [
-        { host: '127.0.0.1', port: 26379 },
-        { host: '127.0.0.1', port: 26380 },
-        { host: '127.0.0.1', port: 26381 },
-      ],
-      preferredSlaves: [
-        { ip: '127.0.0.1', port: '6380', prio: 1 },
-        { ip: '127.0.0.1', port: '6381', prio: 2 },
-      ],
-    },
+    redisOptions: {},
   },
 };
 
