@@ -2,7 +2,7 @@ version: '3'
 
 services:
   event-api:
-    image: event:latest
+    image: event-api:latest
     build:
       context: .
       dockerfile: Dockerfile
