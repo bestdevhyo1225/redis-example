@@ -10,7 +10,7 @@ export default class RedisService {
     this.redisInstance = new Redis({ ...redisOptions });
   }
 
-  public getRedisInstance(): any {
+  public getRedisInstance(): Commands {
     return this.redisInstance;
   }
 }

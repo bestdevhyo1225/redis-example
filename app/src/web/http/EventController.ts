@@ -1,14 +1,17 @@
 import { Context } from 'koa';
 import { route, GET, POST } from 'awilix-koa';
-import { EventService } from 'types/event/service';
 import { EventRequestBuilder } from '../request';
+import EventService from '../../domain/usecase/EventService';
+import UserRepository from '../../data/UserRepository';
 
 @route('/events')
 export default class EventController {
   private readonly eventService: EventService;
+  private readonly userRepository: UserRepository;
 
-  constructor(eventService: EventService) {
+  constructor(eventService: EventService, userRepository: UserRepository) {
     this.eventService = eventService;
+    this.userRepository = userRepository;
   }
 
   @GET()

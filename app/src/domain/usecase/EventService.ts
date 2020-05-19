@@ -1,11 +1,10 @@
 import { Commands, Ok } from 'ioredis';
-import { RedisService } from 'types/redis/service';
 import { EventRequest } from '../../web/request';
 
 export default class EventService {
   private readonly redisInstance: Commands;
 
-  constructor(redisService: RedisService) {
+  constructor(redisService: { redisInstance: Commands }) {
     const { redisInstance } = redisService;
     this.redisInstance = redisInstance;
   }

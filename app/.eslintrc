@@ -4,7 +4,7 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["@typescript-eslint", "import"],
-  "extends": ["airbnb-base", "airbnb-typescript/base", "plugin:@typescript-eslint/eslint-recommended"],
+  "extends": ["airbnb-base", "airbnb-typescript/base", "plugin:@typescript-eslint/eslint-recommended", "prettier"],
   "settings": {
     "import/resolver": {
       "typescript": { "extensions": [".ts", ".tsx", "d.ts"] }
@@ -18,6 +18,8 @@
     "function-paren-newline": "off",
     "object-curly-newline": "off",
     "arrow-body-style": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
+    "import/order": "off"
   }
 }

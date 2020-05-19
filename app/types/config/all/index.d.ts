@@ -8,4 +8,5 @@ export interface ConfigAll {
   readonly syncForce: string | boolean;
   readonly jwtSecret: string | undefined;
   readonly redisOptions: RedisOptions;
+  readonly db?: object;
 }

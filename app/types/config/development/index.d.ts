@@ -4,8 +4,10 @@ export interface ConfigDevelopment {
   readonly syncModels: boolean;
   readonly syncForce: boolean;
   readonly db: {
-    readonly options: {
-      readonly replication: string;
+    readonly database: string;
+    readonly uri: string;
+    readonly options?: {
+      readonly replication?: string;
     };
   };
   readonly redisOptions?: RedisOptions;

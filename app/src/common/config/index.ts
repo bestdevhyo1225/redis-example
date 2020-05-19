@@ -15,6 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
   dotenv.config({
     path: path.join(__dirname, '../../../.env'),
     example: path.join(__dirname, '../../../.env.example'),
+    allowEmptyValues: true,
   });
 }
 
@@ -26,9 +27,16 @@ const index: ConfigIndex = {
     syncModels: process.env.SYNC_MODELS || false,
     syncForce: process.env.SYNC_FORCE || false,
     jwtSecret: process.env.JWT_SECRET || undefined,
+    db: {
+      options: {
+        type: 'mysql',
+        timezone: '+09:00',
+        logging: null,
+      },
+    },
     redisOptions: {
       host: '127.0.0.1',
-      port: 6379,
+      port: 6381,
       sentinels: [],
       name: 'mymaster',
       role: 'master',
@@ -40,7 +48,8 @@ const index: ConfigIndex = {
     syncModels: true,
     syncForce: true,
     db: {
-      uri: requireProcessEnv('MYSQL_TEST_URI'),
+      database: 'api_dev',
+      uri: requireProcessEnv('DB_TEST_URI'),
     },
     redisOptions: {},
   },
@@ -48,8 +57,10 @@ const index: ConfigIndex = {
     syncModels: false,
     syncForce: false,
     db: {
+      database: 'api_dev',
+      uri: requireProcessEnv('DB_TEST_URI'),
       options: {
-        replication: JSON.parse(requireProcessEnv('MYSQL_REPLICATION')),
+        // replication: JSON.parse(requireProcessEnv('DB_REPLICATION')),
       },
     },
     redisOptions: {

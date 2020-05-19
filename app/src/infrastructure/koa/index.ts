@@ -1,3 +1,4 @@
+import { AwilixContainer } from 'awilix';
 import { loadControllers, scopePerRequest } from 'awilix-koa';
 import checkHealth from 'koa-simple-healthcheck';
 import koaBody from 'koa-body';
@@ -5,9 +6,8 @@ import jsend from 'koa-jsend';
 import Koa from 'koa';
 
 import middlewares from './middlewares';
-import container from '../../container';
 
-export default () => {
+export default async (container: AwilixContainer): Promise<Koa> => {
   const app = new Koa();
 
   app.use(jsend());
