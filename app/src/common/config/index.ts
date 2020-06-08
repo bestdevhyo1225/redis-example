@@ -8,7 +8,7 @@ const requireProcessEnv = (name: string): string => {
   if (!process.env[name]) {
     throw new Error(`You must set the ${name} environment variable`);
   }
-  return process.env[name] as string;
+  return process.env[name] || '';
 };
 
 if (process.env.NODE_ENV !== 'production') {
@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
 const index: ConfigIndex = {
   all: {
     env: process.env.NODE_ENV || 'development',
-    port: parseInt(process.env.PORT as string, 10) || 9000,
+    port: parseInt(process.env.PORT as string, 10) || 9002,
     host: process.env.HOST || '0.0.0.0',
     syncModels: process.env.SYNC_MODELS || false,
     syncForce: process.env.SYNC_FORCE || false,
@@ -43,6 +43,7 @@ const index: ConfigIndex = {
       password: 'password1234',
       preferredSlaves: [],
     },
+    userApiGrpcServer: process.env.userApiGrpcServer || 'localhost:9000',
   },
   test: {
     syncModels: true,

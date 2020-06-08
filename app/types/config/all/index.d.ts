@@ -9,4 +9,5 @@ export interface ConfigAll {
   readonly jwtSecret: string | undefined;
   readonly redisOptions: RedisOptions;
   readonly db?: object;
+  readonly userApiGrpcServer?: string;
 }

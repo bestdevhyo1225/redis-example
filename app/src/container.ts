@@ -19,7 +19,12 @@ export const configureContainer = async (dbConnection: Connection): Promise<Awil
   });
 
   container.loadModules(
-    ['./web/http/*Controller.js', './domain/usecase/*Service.js', './external/ioredis/*Service.js'],
+    [
+      './web/http/*Controller.js',
+      './domain/usecase/*Service.js',
+      './external/ioredis/*Service.js',
+      './infrastructure/grpc-caller/*Caller.{js,ts}',
+    ],
     {
       formatName: 'camelCase',
       cwd: path.resolve(__dirname),

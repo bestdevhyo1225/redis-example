@@ -9,7 +9,7 @@ export const createDBConnection = async (): Promise<Connection> => {
     database,
     url: uri,
     synchronize: syncForce,
-    entities: ['/home/node/api/dist/domain/entity/*.js'],
+    entities: ['dist/domain/entity/*.js'],
     ...options,
   });
 
